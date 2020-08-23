@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class TasksTest { // O Selenium é quem dá a habilidade de interagit com o Browser
 
 	public WebDriver acessarAplicacao() {
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Pedro\\.dev\\devops\\util\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver(); // driver do Chrome Iniciado
 		driver.navigate().to("http://localhost:8001/tasks"); // navegando para a página do google
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // fique 10 segundos em timeout
