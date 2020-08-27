@@ -11,10 +11,24 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.20</version>
-				<configuration> 
+				<configuration>
+					<skipTests>${skip.surefire.tests}</skipTests>
 					<parallel>all</parallel> <!-- Utilizando um pararelismo (n sei digiatar essa pal) -->
 					<useUnlimitedThreads>true</useUnlimitedThreads> <!-- Utilizando todas as threads do meu comp. -->
 				</configuration>
+			</plugin>
+			<plugin><!-- Define um plugin -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.18.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
