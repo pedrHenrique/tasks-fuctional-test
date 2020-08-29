@@ -108,4 +108,26 @@ public class TasksTest { // O Selenium é quem dá a habilidade de interagit com
 			driver.quit();
 		}
 	}
+	
+	@Test
+	public void deveRemoverTarefaComSucesso() throws MalformedURLException {
+		WebDriver driver = acessarAplicacao();
+		try {
+			// Inserir uma tarefa 
+			driver.findElement(By.id("addTodo")).click(); 
+			driver.findElement(By.id("task")).sendKeys("naoDeveSalvarTarefaComDataPassada"); 
+			driver.findElement(By.id("dueDate")).sendKeys("10/10/2025"); 
+			driver.findElement(By.id("saveButton")).click();
+			String mensagem = driver.findElement(By.id("message")).getText();
+			assertEquals("Success!", mensagem);
+			
+			//remover Tarefa
+			
+			driver.findElement(By.xpath("//a[@class='btn btn-outline-danger btn-sm']")).click();
+			String mensagemRem = driver.findElement(By.id("message")).getText();
+			assertEquals("Success!", mensagemRem);
+		} finally {
+			driver.quit();
+		}
+	}
 }
